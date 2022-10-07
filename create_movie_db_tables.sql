@@ -1,9 +1,11 @@
 CREATE TABLE "theater" (
   "theater_id" SERIAL,
-  "tickets_available" Integer,
-  "tickets_sold" Integer,
-  PRIMARY KEY ("theater_id")
+  "total_seats" Integer,
+  "seats_available" Integer,
+  PRIMARY KEY ("theater_id"),
+  foreign key ("seats_available") references tickets
 );
+
 
 CREATE TABLE "customer" (
   "id" SERIAL,
@@ -29,10 +31,20 @@ CREATE TABLE "movie" (
   PRIMARY KEY ("movie_id")
 );
 
-CREATE TABLE "ticket" (
+CREATE TABLE "tickets" (
   "ticket_id" SERIAL,
   "ticket_price" NUMERIC(4,2),
   "movie_id" Integer,
+  "tickets_sold" Integer,
   PRIMARY KEY ("ticket_id"),
   foreign key ("movie_id") references movie(movie_id)
 );
+
+
+
+
+
+
+
+
+
